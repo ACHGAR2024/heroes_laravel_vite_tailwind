@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Hero; // Importer le modèle Hero
 
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Hero;
+
 class RechercherHeroesController extends Controller
 {
     public function index(Request $request)

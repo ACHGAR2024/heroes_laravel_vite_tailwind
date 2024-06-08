@@ -15,6 +15,22 @@
     <!-- Scripts -->
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchInput = document.getElementById("searchInput");
+            const searchButton = document.getElementById("searchButton");
+
+            searchButton.addEventListener("click", function(event) {
+                event.preventDefault();
+                const searchValue = searchInput.value.trim();
+                if (searchValue) {
+                    window.location.href = `/rechercherheroes?search=${encodeURIComponent(searchValue)}`;
+                }
+            });
+        });
+    </script>
+
 </head>
 
 <body class="font-sans antialiased bg-slate-900">
@@ -38,24 +54,26 @@
                 <div class="flex w-full top-0 bg-gray-200 border-b border-grey-light opacity-75">
 
                     <!--///////////////Search//////////////// -->
-                    <div class="w-full container mx-auto flex flex-wrap items-center justify-between py-1">
-                        <form action="{{ route('rechercherheroes.index') }}" method="GET">
-                            <input class=" text-black text-bold font-bold rounded-lg" type="text" name="search"
-                                placeholder="Rechercher ...">
-                            <button class=" text-black text-bold font-bold" type="submit"><svg
-                                    class="fill-current text-grey-darkest h-5 w-5 " xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20">
-                                    <path
-                                        d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z">
-                                    </path>
-                                </svg></button>
-                        </form>
 
+                    <div class="w-2/3 inline ml-6">
 
-                        <!-- //////////////////////////////////// -->
-
+                        <input id="searchInput" class="text-black text-bold font-bold rounded-lg" type="text"
+                            name="search" placeholder="Rechercher ...">
+                        <button id="searchButton" class="text-black text-bold font-bold" type="submit">
+                            <svg class="fill-current text-grey-darkest h-5 w-5" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z">
+                                </path>
+                            </svg>
+                        </button>
 
                     </div>
+
+                    <!-- //////////////////////////////////// -->
+
+
+
                 </div>
 
             </div>

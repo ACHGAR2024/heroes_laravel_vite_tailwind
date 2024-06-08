@@ -17,6 +17,13 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
+// ligne hero
+Route::resource('heroes', HeroController::class);
+
+// ligne rechercher
+Route::resource('rechercherheroes', ContactsController::class);
+Route::get('/rechercherheroes', [RechercherHeroesController::class, 'index'])->name('rechercherheroes.index');
+Route::get('rechercherheroes', [RechercherHeroesController::class, 'index'])->name('rechercherheroes.index');
 
 Route::middleware('auth')->group(function () {
     // lignes Gestion routes user
@@ -29,7 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // lignes Gestion routes heroes
-    Route::resource('heroes', HeroController::class);
+
     Route::resource('skills', SkillController::class);
     Route::resource('universes', UniverseController::class);
     Route::resource('articles', ArticleController::class);
@@ -42,12 +49,13 @@ Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts.in
 Route::get('/contacts/show/', [ContactsController::class, 'show'])->name('contacts.show');
 Route::delete('/contacts/{id}', [ContactsController::class, 'destroy'])->name('contacts.destroy');
 
+
+
 // lignes register
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
 Route::post('/register', [RegisteredUserController::class, 'store']);
 
-// ligne rechercher
-Route::get('rechercherheroes', [RechercherHeroesController::class, 'index'])->name('rechercherheroes.index');
+
 
 // lignes auth
 require __DIR__ . '/auth.php';
